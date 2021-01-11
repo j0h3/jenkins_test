@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Echo') {
             steps {
-                sh 'whoami'
+                sh 'echo $PWD'
             }
         }
     }
