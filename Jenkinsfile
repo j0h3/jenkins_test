@@ -1,15 +1,30 @@
 pipeline {
     agent { dockerfile true }
+    
+    options {
+      withCredentials(awsCredentials)
+      timestamps()
+    }
+
+    environment {
+      AWS_REGION = "eu-west-3"
+    }
+
     stages {
-        stage('Launch') {
+        stage('Init Terraform directory') {
             steps {
-                sh 'python /srv/test/test.py'
+                sh 'terraform init'
             }
         }
-        stage('Echo') {
+        stage('Plan terraform code') {
             steps {
-                sh 'echo $PWD'
+                sh 'terraform plan'
             }
         }
+	stage('Apply terraform code') {
+	   steps {
+               sh 'terraform apply -auto-approve'
+	   }
+	}
     }
 }
