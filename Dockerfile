@@ -1,2 +1,3 @@
 FROM hashicorp/terraform:latest 
-COPY ./ec2/* ./
+RUN mkdir ec2
+COPY ./ec2/* ./ec2/
