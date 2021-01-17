@@ -18,18 +18,17 @@ pipeline {
     stages {
         stage('Init Terraform directory') {
             steps {
-                sh 'ls -l .'
-                sh 'terraform init'
+                sh 'terraform init -chdir=ec2'
             }
         }
         stage('Plan terraform code') {
             steps {
-                sh 'terraform plan'
+                sh 'terraform plan -chdir=ec2'
             }
         }
 	stage('Apply terraform code') {
 	   steps {
-               sh 'terraform apply -auto-approve'
+               sh 'terraform apply -chdir=ec2 -auto-approve'
 	   }
 	}
     }
