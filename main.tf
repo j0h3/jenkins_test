@@ -1,3 +1,10 @@
+terraform {
+  backend "s3" {
+    bucket = var.bucket
+    key    = var.path
+    region = var.region
+  }
+}
 provider "aws" {
   region     = var.region
 }
