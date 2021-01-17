@@ -18,7 +18,6 @@ pipeline {
     stages {
         stage('Init Terraform directory') {
             steps {
-                sh 'ls -l .'
                 sh 'terraform init'
             }
         }
