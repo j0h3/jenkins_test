@@ -2,8 +2,8 @@ pipeline {
     agent { dockerfile true }
     
     options {
-      withCredentials(awsCredentials)
-      timestamps()
+     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-key', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) 
+     timestamps()
     }
 
     environment {
