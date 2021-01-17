@@ -18,17 +18,17 @@ pipeline {
     stages {
         stage('Init Terraform directory') {
             steps {
-                sh 'terraform init ./ec2'
+                sh 'terraform init'
             }
         }
         stage('Plan terraform code') {
             steps {
-                sh 'terraform plan ./ec2'
+                sh 'terraform plan'
             }
         }
 	stage('Apply terraform code') {
 	   steps {
-               sh 'terraform apply -auto-approve ./ec2'
+               sh 'terraform apply -auto-approve'
 	   }
 	}
     }
