@@ -1,2 +1,2 @@
 FROM hashicorp/terraform:latest 
-COPY ./ec2/* .
+COPY ./ec2/* ./
